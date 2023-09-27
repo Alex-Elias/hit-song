@@ -13,7 +13,6 @@ df.insert(4, 'artist count', 1)
 df['artist count'] = df['artist'].apply(lambda x: len(x.split(',')) if isinstance(x, str) else 0)
 
 #label encoding for chart and trend
-chart_encoder = LabelEncoder()
 trend_encoder = LabelEncoder()
 
 df['trend_encoded'] = trend_encoder.fit_transform(df['trend'])
