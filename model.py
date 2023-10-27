@@ -22,6 +22,7 @@ class Data_preprocessing:
     Attributes:
         data (pandas Dataframe): the processed data with the target axes removed
         target (pandas Dataframe): The target values
+        scaler (MinMaxScaler): trained MinMaxScaler
     """
     def __init__(self, data: pd.DataFrame, target: str) -> None:
         self.data = data.drop(target, axis=1)
@@ -31,6 +32,7 @@ class Data_preprocessing:
     def __scale(self) -> None:
         scaler = MinMaxScaler()
         scaler.fit(self.data)
+        self.scaler = scaler
 
         self.data = scaler.transform(self.data)
 
@@ -47,6 +49,15 @@ class Data_preprocessing:
         """
         return train_test_split(self.data, self.target, test_size=size, random_state=0)
     
+    def get_scaler(self) -> MinMaxScaler:
+        """
+        Returns the trained MinMaxScaler object
+
+        Returns:
+            (MinMaxScaler): the trained MinMaxScaler object
+        """
+        return self.scaler
+    
 
 
 class Model:
@@ -58,8 +69,10 @@ class Model:
     Attributes:
         opt (keras.optimizers.Adam): stores the Adam optimizer
         model (Sequential): stores the sequential model
+        scaler (MinMaxScaler): trained MinMaxScaler
     """
     opt = keras.optimizers.Adam(learning_rate=0.001)
+    scaler = None
 
     def create_model(self, input: int) -> None:
         """
@@ -136,8 +149,19 @@ class Model:
         Returns:
             (int): Returns either a 1 or 0
         """
+
+        parameters = self.scaler.transform(parameters)
         predicted = self.model.predict(parameters)
         return predicted
+    
+    def set_scaler(self, scaler: MinMaxScaler) -> None:
+        """
+        Sets the MinMaxScaler used in the predict method
+
+        Args:
+            scaler (MinMaxScaler): the trained MinMaxScaler used to scale the features for the predict method
+        """
+        self.scaler = scaler
     
 
 def main():
@@ -148,8 +172,12 @@ def main():
     dp = Data_preprocessing(df, "target")
     x_train, x_test, y_train, y_test = dp.split(0.1)
 
+    scaler = dp.get_scaler()
+
     model = Model()
     model.create_model(15)
+
+    model.set_scaler(scaler)
 
     model.train(x_train, y_train, 500)
 
