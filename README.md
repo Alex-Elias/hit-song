@@ -35,10 +35,13 @@ It is also possible to use our pretrained model model.keras, it can be open as i
     from tensorflow.keras.models import load_model
 
     # load model
-    model = load_model("model.keras")
+    model_trained = load_model("model.keras")
 
     # check model info
-    model.summary()
+    model_trained.summary()
+
+    # set the model to the Model class
+    model.set_model(model_trained)
 
 ##### Evaluation
 The model can be evaluated in the following way
@@ -47,6 +50,21 @@ The model can be evaluated in the following way
 
 It will return the loss and the acuracy.
 ##### Prediction
+First the features must be normalized with the MinMaxScaler. This can be done with the getting the scaler from the Data_preprocessing class and setting it to the Model class
+
+        scaler = dp.get_scaler()
+        model.set_scaler(scaler)
+        
+Or then by using the pretrained scaler.sav scaler included in this repository
+
+        # import the necessary library
+        import joblib
+
+        # load the scaler with joblib
+        scaler = joblib.load(scaler.sav)
+
+        model.set_scaler(scaler)
+
 The model can now be used to make predictions
 
     print(model.predict(features))
