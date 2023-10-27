@@ -44,6 +44,8 @@ It is also possible to use our pretrained model model.keras, it can be open as i
 The model can be evaluated in the following way
 
     model.evaluate(x_test, y_test)
+
+It will return the loss and the acuracy.
 ##### Prediction
 The model can now be used to make predictions
 
