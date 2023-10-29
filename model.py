@@ -181,11 +181,14 @@ def main():
 
     model.train(x_train, y_train, 500)
 
-    #model.model.save("./model.keras")
+    model.model.save("./model.hdf5")
 
     print(model.evaluate(x_test, y_test))
 
-
+    features = np.array([1,1,1,1,0.5,1,1,1,1,1,1,1,1,1,1])
+    features = features.reshape(1,-1)
+    prediction = model.predict(features)
+    print(prediction)
 
 if __name__ == "__main__":
     main()
