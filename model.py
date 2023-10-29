@@ -165,7 +165,7 @@ class Model:
     
 
 def main():
-    df = pd.read_csv("/home/alex/Documents/intro_DS_Project/hit_songs_decade/dataset-of-10s.csv")
+    df = pd.read_csv("./data/dataset-of-10s.csv")
     
     df.drop(["track", "artist", "uri"], axis=1, inplace=True)
 
