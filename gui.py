@@ -1,33 +1,18 @@
 import tkinter as tk
 from tkinter import ttk
 import pandas as pd
-import keras
-from model import Model
-from model import Data_preprocessing
-import joblib
 from keras.models import load_model
 from sklearn.preprocessing import MinMaxScaler
-import tkinter as tk
-from tkinter import ttk
-import keras
-from keras.models import load_model
-from sklearn.preprocessing import MinMaxScaler
-import pandas as pd
 
-class MachineLearningApp:
+class Application:
     def __init__(self, root):
         self.root = root
         self.root.title("Machine Learning Predictor")
 
-        # Load your pre-trained machine learning model
+        self.model = load_model("model.keras")  
 
-        self.model = load_model("model.keras")  # Replace with the path to your model file
-
-        # Create and configure input frame
         self.input_frame = ttk.LabelFrame(root, text="Input Data")
         self.input_frame.grid(column=0, row=0, padx=10, pady=10, sticky="w")
-
-        # Create an empty DataFrame to store user inputs
         self.user_input_data = pd.DataFrame()
 
         labels_list = ['danceability (0-1)', 'energy (0-1)', 'key (0-10)', 
@@ -37,8 +22,9 @@ class MachineLearningApp:
                        'duration_ms (0+)', 'time_signature (0-16)', 
                        'chorus_hit (0+)', 'sections (0+)']
 
-        # Create input labels and entry fields for 15 features
+     
         self.feature_entries = []
+
         for i in range(15):
             label = ttk.Label(self.input_frame, text=f"Input your estimated value for {labels_list[i]} of your song:")
             label.grid(column=0, row=i)
@@ -46,7 +32,6 @@ class MachineLearningApp:
             entry.grid(column=1, row=i)
             self.feature_entries.append(entry)
 
-        # Create and configure output frame
         self.output_frame = ttk.LabelFrame(root, text="Prediction")
         self.output_frame.grid(column=0, row=1, padx=10, pady=10, sticky="w")
 
@@ -104,5 +89,5 @@ class MachineLearningApp:
 
 if __name__ == "__main__":
     root = tk.Tk()
-    app = MachineLearningApp(root)
+    app = Application(root)
     root.mainloop()
