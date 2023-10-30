@@ -1,6 +1,6 @@
 # Project for the introduction to Data Science course
 ## Hit songs
-This is our project for the introduction to Data Science course, we used the [Spotify Hit Predictor Dataset (1960-2019](https://www.kaggle.com/datasets/theoverman/the-spotify-hit-predictor-dataset/) from Kaggle to train a machine learning model to predict hit songs.
+This is our project for the introduction to Data Science course, we used the [Spotify Hit Predictor Dataset (1960-2019)](https://www.kaggle.com/datasets/theoverman/the-spotify-hit-predictor-dataset/) from Kaggle to train a machine learning model to predict hit songs.
 
 ### Installation of Requirements
 Python 3.10 was used to run this project and requirements are stored in the requirements.txt file. They can be installed with running the following command in the terminal <code> pip3 install -r requirements.txt</code>
