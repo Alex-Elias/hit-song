@@ -8,7 +8,7 @@ from keras.layers import Dense
 from sklearn.model_selection import train_test_split
 import sklearn
 from sklearn.preprocessing import MinMaxScaler
-
+import joblib
 
 
 class Data_preprocessing:
@@ -176,19 +176,18 @@ def main():
 
     model = Model()
     model.create_model(15)
+    joblib.dump(scaler, open("scalerrrr.sav", "wb"))
 
     model.set_scaler(scaler)
 
     model.train(x_train, y_train, 500)
 
-    model.model.save("./model.hdf5")
+
+    model.model.save("./model.keras")
 
     print(model.evaluate(x_test, y_test))
 
-    features = np.array([1,1,1,1,0.5,1,1,1,1,1,1,1,1,1,1])
-    features = features.reshape(1,-1)
-    prediction = model.predict(features)
-    print(prediction)
+    
 
 if __name__ == "__main__":
     main()
