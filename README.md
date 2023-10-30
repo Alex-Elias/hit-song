@@ -6,8 +6,7 @@ This is our project for the introduction to Data Science course, we used the [Sp
 Python 3.10 was used to run this project and requirements are stored in the requirements.txt file. They can be installed with running the following command in the terminal <code> pip3 install -r requirements.txt</code>
 
 ### Quick Start Guide
-After the necessary requirements have been downloaded, the application can be started by running gui.py in the right directory.
-
+The application can be started by cloning the repository, installing the necessary requirements, and running <code> gui.py <code>. 
 
 ### Required Features
 Taken directly from the author of the [Spotify Hit Predictor Dataset (1960-2019](https://www.kaggle.com/datasets/theoverman/the-spotify-hit-predictor-dataset/), the prediction parameter must include these features, in this order, and created in this sense. Here is a description of each parameter.
