@@ -9,7 +9,7 @@ Python 3.10 was used to run this project and requirements are stored in the requ
 The application can be started by cloning the repository, installing the necessary requirements, and running <code> gui.py</code>.
 
 ### Required Features
-Taken directly from the author of the [Spotify Hit Predictor Dataset (1960-2019](https://www.kaggle.com/datasets/theoverman/the-spotify-hit-predictor-dataset/), the prediction parameter must include these features, in this order, and created in this sense. Here is a description of each parameter.
+Taken directly from the author of the [Spotify Hit Predictor Dataset (1960-2019)](https://www.kaggle.com/datasets/theoverman/the-spotify-hit-predictor-dataset/), the prediction parameter must include these features, in this order, and created in this sense. Here is a description of each parameter.
 
         - danceability: Danceability describes how suitable a track is for dancing based on a combination of musical elements including tempo, rhythm stability, beat strength, and overall regularity. A value of 0.0 is least danceable and 1.0 is most danceable. 
         
@@ -17,7 +17,7 @@ Taken directly from the author of the [Spotify Hit Predictor Dataset (1960-2019]
         
         - key: The estimated overall key of the track. Integers map to pitches using standard Pitch Class notation. E.g. 0 = C, 1 = C?/D?, 2 = D, and so on. If no key was detected, the value is -1.
         
-        - loudness: The overall loudness of a track in decibels (dB). Loudness values are averaged across the entire track and are useful for comparing relative loudness of tracks. Loudness is the quality of a sound that is the primary psychological correlate of physical strength (amplitude). Values typical range between -60 and 0 db. 
+        - loudness: The overall loudness of a track in decibels (dB). Loudness values are averaged across the entire track and are useful for comparing relative loudness of tracks. Loudness is the quality of a sound that is the primary psychological correlate of physical strength (amplitude). Values typically range between -60 and 0 db. 
         
         - mode: Mode indicates the modality (major or minor) of a track, the type of scale from which its melodic content is derived. Major is represented by 1 and minor is 0.
         
